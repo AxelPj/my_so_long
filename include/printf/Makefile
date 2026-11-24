@@ -1,8 +1,8 @@
-NAME = libftprintf.a
+NAME = libmyprintf.a
 CC = gcc
 SRC =	conversion_utils.c \
-		ft_printf.c \
-		ft_parse_printf.c \
+		my_printf.c \
+		my_parse_printf.c \
 		string_utils.c
 
 CFLAGS = -Wall -Wextra -Werror

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   intro.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: axelpeti <axelpeti@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 14:03:45 by axelpeti          #+#    #+#             */
-/*   Updated: 2025/03/17 13:08:33 by axelpeti         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../include/header/so_long.h"
 
 void	ini_intro(t_intro *intro, char *map)
@@ -22,8 +10,8 @@ void	ini_intro(t_intro *intro, char *map)
 	if (!intro->mlx2)
 	{
 		free(intro->op);
-		ft_putstr_fd("Error\ncannot connect to the X server", 2);
-		ft_putstr_fd(" (is DISPLAY set? on Mac: export DISPLAY=:0)\n", 2);
+		my_putstr_fd("Error\ncannot connect to the X server", 2);
+		my_putstr_fd(" (is DISPLAY set? on Mac: export DISPLAY=:0)\n", 2);
 		exit(EXIT_FAILURE);
 	}
 	charge_intro_all(intro);

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utils_mlx.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: axelpeti <axelpeti@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 17:41:15 by axelpeti          #+#    #+#             */
-/*   Updated: 2025/03/17 16:36:29 by axelpeti         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../include/header/so_long.h"
 
 void	open_windows(t_game *game)
@@ -52,7 +40,7 @@ int	key_hook(int keycode, t_game *game)
 		attaque(game);
 	else if (keycode == 101 && game->ssj_on == 1)
 		kamehameha(game);
-	ft_printf("deplacement = %d\n\n\n\n", game->deplacement);
+	my_printf("deplacement = %d\n\n\n\n", game->deplacement);
 	return (0);
 }
 

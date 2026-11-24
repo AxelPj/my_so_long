@@ -1,23 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   string_utils.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: axelpeti <axelpeti@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 17:57:15 by axelpeti          #+#    #+#             */
-/*   Updated: 2024/11/26 17:09:31 by axelpeti         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "my_printf.h"
 
-#include "ft_printf.h"
-
-int	ft_putchar(char c)
+int	my_putchar(char c)
 {
 	return (write (1, &c, 1));
 }
 
-int	ft_putstr(char *str)
+int	my_putstr(char *str)
 {
 	int	len;
 

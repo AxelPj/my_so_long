@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: axelpeti <axelpeti@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/11 15:17:12 by axelpeti          #+#    #+#              #
-#    Updated: 2025/03/16 17:05:30 by axelpeti         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 # Nom de l'exécutable
 NAME = so_long
 
@@ -24,12 +12,12 @@ SRCS = ./src/main/main.c \
 	   ./src/attaque/attaque.c ./src/attaque/kamehameha.c ./src/attaque/kamehameha2.c ./src/attaque/compteur_att.c \
 	   ./include/GNL/get_next_line.c
 
-# Répertoire et archive de la libft
-LIBFT_DIR = ./include/libft
-LIBFT = $(LIBFT_DIR)/libft.a
+# Répertoire et archive de la libmy
+LIBMY_DIR = ./include/libmy
+LIBMY = $(LIBMY_DIR)/libmy.a
 
 PRINTF_DIR = ./include/printf
-PRINTF = $(PRINTF_DIR)/libftprintf.a
+PRINTF = $(PRINTF_DIR)/libmyprintf.a
 
 # Répertoires
 BUILD_DIR = build
@@ -55,7 +43,7 @@ ifeq ($(UNAME),Darwin)
 else
 	MLX_BUILD = $(MAKE) -C $(MINILIBX_DIR)
 endif
-MAP ?= map/map1.ber
+MAP ?= map/map3.ber
 
 
 # Couleurs pour affichage
@@ -65,7 +53,7 @@ RESET = \033[0m
 RED = \033[0;31m
 
 # Règle par défaut
-all: $(MLX) $(LIBFT) $(PRINTF) $(NAME)
+all: $(MLX) $(LIBMY) $(PRINTF) $(NAME)
 
 # Compilation de la minilibx (X11)
 $(MLX):
@@ -73,44 +61,44 @@ $(MLX):
 	$(MLX_BUILD)
 
 # Compilation de l'exécutable
-$(NAME): $(MLX) $(LIBFT) $(PRINTF) $(OBJS)
+$(NAME): $(MLX) $(LIBMY) $(PRINTF) $(OBJS)
 	@echo "$(YELLOW)🔨 Linking $(NAME)... 🚀$(RESET)"
-	$(CC) $(OBJS) $(LIBFT) $(PRINTF) $(LDFLAGS) -o $(NAME)
+	$(CC) $(OBJS) $(LIBMY) $(PRINTF) $(LDFLAGS) -o $(NAME)
 	@echo "$(GREEN)✅ Compilation successful!$(RESET)"
 
-# Compilation de la libft
-$(LIBFT):
-	@echo "$(YELLOW)🔨 Compiling libft... 🚀$(RESET)"
-	$(MAKE) -C $(LIBFT_DIR)
+# Compilation de la libmy
+$(LIBMY):
+	@echo "$(YELLOW)🔨 Compiling libmy... 🚀$(RESET)"
+	$(MAKE) -C $(LIBMY_DIR)
 
-# Compilation de la libftprintf
+# Compilation de la libmyprintf
 $(PRINTF):
-	@echo "$(YELLOW)🔨 Compiling libftprintf... 🚀$(RESET)"
+	@echo "$(YELLOW)🔨 Compiling libmyprintf... 🚀$(RESET)"
 	$(MAKE) -C $(PRINTF_DIR)
 
 # Règle pour les fichiers objets
 $(BUILD_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	@echo "$(YELLOW)📝 Compiling $<...$(RESET)"
-	$(CC) $(CFLAGS) $(X11_INC) -I$(MINILIBX_DIR) -I$(LIBFT_DIR) -I$(PRINTF_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) $(X11_INC) -I$(MINILIBX_DIR) -I$(LIBMY_DIR) -I$(PRINTF_DIR) -c $< -o $@
 	@echo "$(GREEN)✅ Compilation of $< finished$(RESET)"
 
 # Nettoyage des fichiers objets
 clean:
 	@echo "$(RED)🧹 Cleaning object files...$(RESET)"
 	rm -rf $(BUILD_DIR)
-	@echo "$(RED)🧹 Cleaning libft objects...$(RESET)"
-	$(MAKE) clean -C $(LIBFT_DIR)
-	@echo "$(RED)🧹 Cleaning libftprintf objects...$(RESET)"
+	@echo "$(RED)🧹 Cleaning libmy objects...$(RESET)"
+	$(MAKE) clean -C $(LIBMY_DIR)
+	@echo "$(RED)🧹 Cleaning libmyprintf objects...$(RESET)"
 	$(MAKE) clean -C $(PRINTF_DIR)
 
 # Nettoyage complet
 fclean: clean
 	@echo "$(RED)🧼 Removing executable...$(RESET)"
 	rm -f $(NAME)
-	@echo "$(RED)🧼 Cleaning libft archive...$(RESET)"
-	$(MAKE) fclean -C $(LIBFT_DIR)
-	@echo "$(RED)🧼 Cleaning libftprintf archive...$(RESET)"
+	@echo "$(RED)🧼 Cleaning libmy archive...$(RESET)"
+	$(MAKE) fclean -C $(LIBMY_DIR)
+	@echo "$(RED)🧼 Cleaning libmyprintf archive...$(RESET)"
 	$(MAKE) fclean -C $(PRINTF_DIR)
 
 # Recompilation complète
@@ -121,7 +109,7 @@ debug: CFLAGS += -g -fsanitize=address
 debug: re
 
 # Lancement sur Mac : vérifie XQuartz, compile, ouvre XQuartz puis le jeu
-# Utilisation : make mac            (map par défaut : map/map1.ber)
+# Utilisation : make mac            (map par défaut : map/map3.ber)
 #               make mac MAP=map/map2.ber
 mac: check_xquartz all
 	@open -a XQuartz

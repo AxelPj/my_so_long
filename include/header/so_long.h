@@ -1,24 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: axelpeti <axelpeti@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 15:59:06 by axelpeti          #+#    #+#             */
-/*   Updated: 2025/03/17 16:36:20 by axelpeti         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # define TILES_SIZE 64
 # define KAME_DELAY 45000
 # define INTRO_DELAY 30000
 # include "../GNL/get_next_line.h"
-# include "../libft/libft.h"
+# include "../libmy/libmy.h"
 # include "../minilibx/mlx.h"
-# include "../printf/ft_printf.h"
+# include "../printf/my_printf.h"
 # include <unistd.h>
 # include <string.h>
 # include <stddef.h>
@@ -183,7 +171,7 @@ void	free_sprite(t_game *game);
 void	destroy_sprite3(t_game *game, int i, int j);
 void	destroy_sprite4(t_game *game, int i, int j);
 void	destroy_sprite5(t_game *game, int i, int j);
-int		ft_strcmp(const char *s1, const char *s2);
+int		my_strcmp(const char *s1, const char *s2);
 void	free_error(t_game *game);
 
 // --------------------parsing--------------------//

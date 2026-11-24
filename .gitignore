@@ -1,0 +1,13 @@
+# Fichiers objets et bibliothèques compilées
+*.o
+*.a
+
+# Dossier de compilation
+build/
+
+# Exécutables
+/so_long
+a.out
+
+# macOS
+.DS_Store
